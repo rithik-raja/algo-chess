@@ -1,0 +1,464 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --light-blue: rgb(59, 237, 228);
+  --dark-blue: rgb(44, 128, 128);
+  --grey1: #2E3047;
+  --grey2: #43455C;
+  --grey3: #3C3F58;
+  --grey4: #707793;
+  /*mintcream*/
+}
+
+/*
+xl >1200px (larger desktops)
+lg >992px (laptops)
+md >768 (tablets)
+sm >576 (larger phones)
+xs >0 (smaller phones)
+*/
+
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+a, a:hover, a:visited, a:active {
+  color: inherit;
+}
+.hover-pointer {
+  cursor: pointer;
+}
+
+body {
+  background-color: var(--grey2);
+  margin: 0;
+  font-family: "Urbanist", 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  height: 40px;
+  border-width: 2px;
+  padding: 7px;
+  border-radius: 5px;
+  border-style: solid;
+  letter-spacing: .1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+  background-color: var(--grey1);
+  padding: 10px;
+}
+
+.connect-wallet-button {
+  border-color: var(--light-blue);
+  color: var(--light-blue);
+  background-color: var(--grey1);
+}
+
+button.connect-wallet-button:hover {
+  background-color: var(--light-blue);
+  color: var(--grey1);
+}
+
+/* CONTENT DIV */
+
+.loading-div {
+  display: flex;
+  border: solid;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.create-game-button {
+  border-color: var(--light-blue);
+  color: var(--light-blue);
+  background-color: var(--grey2);
+  height: 60px;
+  font-size: x-large;
+  font-weight: 100;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+button.create-game-button:not(.disabled):hover {
+  background-color: var(--light-blue);
+  color: var(--grey2);
+}
+
+
+.please-connect-text {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.please-connect-text.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.modal-container.hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.modal-close-button {
+  background-color: var(--dark-blue);
+  width: 45px;
+  height: 30px;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bolder;
+  color: mintcream;
+  border-style: none;
+  line-height: 10px;
+
+  transition: background-color 0.5s, color 0.5s;
+}
+
+button.modal-close-button:hover {
+  color: var(--dark-blue);
+  background-color: mintcream;
+}
+
+.wager-input, .display-wager {
+  width: 30%;
+  max-width: 150px;
+  border-radius: 10px;
+  border-style: none;
+  outline: none;
+  background-color: mintcream;
+  height: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--dark-blue);
+  text-align: center;
+  font-family: "Varela Round";
+}
+
+.wager-input:disabled {
+  caret-color: transparent;
+}
+
+.confirm-wager, .decline-wager, .declined-dismiss, .join-chess-game, .cancel-game, .got-it-button, .chess-variants {
+  padding-left: 10px;
+  padding-right: 10px;
+  min-width: fit-content;
+  width: 30%;
+  min-height: 30px;
+  font-size: large;
+  border-color: mintcream;
+  color: mintcream;
+  background-color: var(--dark-blue);
+}
+
+.confirm-wager, .decline-wager, .declined-dismiss, .join-chess-game, .cancel-game, .got-it-button {
+  max-width: 150px;
+}
+
+.chess-variants {
+  min-width: 47%;
+  font-weight: normal;
+}
+
+.settings {
+  margin-left: 20px;
+  padding: 10px;
+  min-width: fit-content;
+  min-height: fit-content;
+  width: 50px;
+  height: 50px;
+  border-color: mintcream;
+  background-color: transparent;
+}
+
+.gear {
+  transition: transform 0.3s ease-in-out;
+}
+
+.accept-wager {
+  width: 30%;
+  min-width: fit-content;
+  max-width: 150px;
+  height: 40px;
+  font-size: large;
+  border-color: goldenrod;
+  color: goldenrod;
+  background-color: var(--dark-blue);
+}
+
+.arrow-button {
+  min-width: fit-content;
+  min-height: fit-content;
+  font-size: large;
+  font-weight: bolder;
+  color: mintcream;
+  border-color: mintcream;
+  background-color: transparent;
+}
+
+.right-arrow-button {
+  margin-left: 10px;
+}
+
+.left-arrow-button {
+  margin-right: 10px;
+}
+
+.chess-variants.ischecked {
+  border-color: mintcream;
+  color: var(--dark-blue);
+  background-color: mintcream;
+}
+
+
+button.confirm-wager:hover, button.decline-wager:hover, button.declined-dismiss:hover, .join-chess-game:hover, .cancel-game:hover, .got-it-button:hover, .chess-variants:hover {
+  border-color: mintcream;
+  color: var(--dark-blue);
+  background-color: mintcream;
+}
+
+button.accept-wager:hover {
+  border-color: goldenrod;
+  color: mintcream;
+  background-color: goldenrod;
+}
+
+.settings:hover > .gear {
+  transform: rotate(45deg);
+}
+
+.Collapsible {
+  background-color: var(--grey3);
+  border-radius: 5px;
+  font-size: x-large;
+  margin: 5px;
+}
+.Collapsible__contentInner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 10px;
+}
+.Collapsible__contentInner p, .Collapsible__contentInner ol {
+  font-size: large;
+  color: mintcream;
+}
+.Collapsible__contentInner p:last-child {
+  margin-bottom: 0;
+}
+.Collapsible__trigger {
+  display: block;
+  font-weight: 400;
+  text-decoration: none;
+  position: relative;
+  border-radius: 5px;
+  padding: 15px;
+  background: var(--dark-blue);
+  color: mintcream;
+}
+.Collapsible__trigger:after {
+  content: '▲';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+  transition: transform 300ms;
+}
+.Collapsible__trigger.is-open:after {
+  transform: rotateZ(180deg);
+}
+.copy-username-link:hover {
+  cursor: pointer;
+}
+
+.checkbox {
+  cursor: pointer;
+  appearance: none;
+  width: 60px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: mintcream;
+  border-style: solid;
+  border-color: mintcream;
+  border-radius: 5px;
+  background-color: var(--dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.checkbox::after {
+  content: "Off";
+}
+
+.checkbox:checked::after {
+  content: "On";
+}
+
+.checkbox:hover {
+  color: var(--dark-blue);
+  border-color: mintcream;
+  background-color: mintcream
+}
+
+/*Tablets*/
+@media (max-width: 1024px) and (min-width: 480px) {
+  button {
+    font-size: x-small;
+    border-width: 1.5px;
+    padding: 5px;
+    height: 35px;
+    font-weight: normal;
+  }
+  .create-game-button {
+    height: 50px;
+    font-size: large;
+  }
+  .chess-variants {
+    font-size: small;
+    padding: 0px 5px 0px 5px;
+  }
+  .settings {
+    margin-left: 20px;
+    padding: 8px;
+    width: 45px;
+    height: 45px;
+  }
+  .Collapsible {
+    font-size: large;
+  }
+  .Collapsible__contentInner p, .Collapsible__contentInner ol {
+    font-size: medium;
+  }
+  .Collapsible__contentInner {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .checkbox {
+    width: 50px;
+    height: 25px;
+    font-size: 18px;
+    font-weight: normal;
+  }
+  .wager-input, .display-wager {
+    max-width: 120px;
+    height: 30px;
+    font-size: 25px;
+  }
+  .confirm-wager, .decline-wager, .declined-dismiss, .join-chess-game, .cancel-game, .got-it-button, .chess-variants {
+    max-width: 120px;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 30px;
+    font-size: medium;
+  }
+  .accept-wager {
+    max-width: 120px;
+    height: 30px;
+    font-size: medium;
+  }
+
+}
+
+/*Phones*/
+@media (max-width: 479px) {
+  button {
+    border-width: 1.5px;
+    font-size: x-small;
+    padding: 5px;
+    height: 30px;
+    font-weight: normal;
+  }
+  .create-game-button {
+    height: 40px;
+    font-size: medium;
+  }
+  .chess-variants {
+    font-size: small;
+    padding: 0px 5px 0px 5px;
+  }
+  .settings {
+    margin-left: 20px;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+  }
+  .Collapsible {
+    font-size: medium;
+  }
+  .Collapsible__contentInner p, .Collapsible__contentInner ol {
+    font-size: small;
+  }
+  .Collapsible__contentInner {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .checkbox {
+    width: 40px;
+    height: 20px;
+    font-size: 15px;
+    font-weight: normal;
+  }
+  .wager-input, .display-wager {
+    max-width: 120px;
+    height: 30px;
+    font-size: 25px;
+  }
+  .confirm-wager, .decline-wager, .declined-dismiss, .join-chess-game, .cancel-game, .got-it-button, .chess-variants {
+    max-width: 120px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 30px;
+    font-size: small;
+  }
+  .accept-wager {
+    max-width: 120px;
+    height: 30px;
+    font-size: small;
+  }
+}
