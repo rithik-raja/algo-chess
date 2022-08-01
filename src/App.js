@@ -14,9 +14,10 @@ const REACT_APP_URL = process.env.REACT_APP_URL
 
 const stdlib = loadStdlib("ALGO")
 
+Axios.defaults.headers.common["Access-Control-Allow-Origin"] = process.env.REACT_APP_ORIGIN
+
 let redirect = null
 let alreadyHasGame = 0
-//let UrlsLoaded = false
 
 let opponentAddress
 let wagerSetByOpponent
@@ -151,16 +152,3 @@ export default function App() {
   );
 }
 
-
-/*
-TODO:
-handle errors:
-overspend on both side
-backend failure
-bob accepts after alice had cancelled contract
-user rejects transactions
-input is 0 or exceeds minimum balance
-
-update contract to check for incorrect outcome
-getexistinggame fails when the contract expires but the page is left open
-*/
