@@ -795,7 +795,7 @@ export default function Body(props) {
             <div style={flexStyle({justifyContent: "center", marginTop: (IS_LAPTOP ? "80px" : IS_TABLET ? "50px" : "20px")})}>
                 <div style={flexStyle({flexDirection: "column", alignItems: "center", whiteSpace: "nowrap"})}>
                     {(REACT_APP_CONNECTOR === "TESTNET") &&
-                      <span style={textStyle({color: "var(--light-blue)", fontSize: (IS_LAPTOP ? "40px" : IS_TABLET ? "35px" : "30px"), fontWeight: "thin", margin: "0px 0px 10px 0px"})}>TestNet</span>
+                      <span style={textStyle({color: "var(--light-blue)", fontSize: (IS_PHONE ? "18px" : "20px"), fontWeight: "thin", margin: "0px 0px 10px 0px"})}>(TestNet)</span>
                     }
                     <span style={textStyle({fontSize: (IS_LAPTOP ? "40px" : IS_TABLET ? "35px" : "30px"), fontWeight: "thin", margin: "0px 0px 10px 0px"})}>Simple Chess Wagering</span>
                     <span style={textStyle({fontSize: (IS_PHONE ? "18px" : "20px"), margin: `0px 0px ${IS_LAPTOP ? 40 : IS_TABLET ? 33 : 25}px 0px`})}>Challenge a friend. Winner takes all.</span>
