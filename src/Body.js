@@ -83,7 +83,7 @@ export default function Body(props) {
     else vals = JSON.parse(vals)
     return vals
   })())
-  const [isTimed, setIsTimed] = useState(localStorage.getItem("preferredIsTimed") === "true")
+  const [isTimed, setIsTimed] = useState(localStorage.getItem("preferredIsTimed") === "true" || localStorage.getItem("preferredIsTimed") === null)
 
   useEffect(() => {
     Axios.defaults.withCredentials = true
@@ -783,9 +783,12 @@ export default function Body(props) {
                     <span style={textStyle({fontSize: (IS_PHONE ? "18px" : "20px"), margin: `0px 0px ${IS_LAPTOP ? 40 : IS_TABLET ? 33 : 25}px 0px`})}>Challenge a friend. Winner takes all.</span>
                     <div style={flexStyle({alignItems: "center"})}>
                       <LoadingButton loadingid={1} text={props.alreadyHasGame ? "RESUME GAME" : (props.user === "Alice" ? "CREATE GAME" : "JOIN GAME")} id="create-game" className="create-game-button" onClick={showModal} onMouseEnter={plsConnectHover} onMouseLeave={plsConnectUnhover} />
-                      <button className="settings" onClick={showSettings}>
-                        <GearImg height="100%" className="gear"/>
-                      </button>
+                      {
+                        (props.user === "Alice") &&
+                        <button className="settings" onClick={showSettings}>
+                          <GearImg height="100%" className="gear"/>
+                        </button>
+                      }
                     </div>
                     <span style={textStyle({fontSize: (IS_LAPTOP ? "20px" : IS_TABLET ? "16px" : "12px"), marginTop: "10px", marginBottom: "10px"})} id="please-connect-text" className="please-connect-text hidden">Please connect a wallet first.</span>
                 </div>
