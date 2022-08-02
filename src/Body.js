@@ -748,6 +748,22 @@ export default function Body(props) {
             <Collapsible trigger="Why should I trust it?" transitionTime={200}>
               <p>AlgoChess utilizes smart contracts, which allow the wagering process to be executed trustlessly. Not only does this mean that your opponent cannot back out once the game has started, but no other party, including AlgoChess, can access your funds.</p>
             </Collapsible>
+            <Collapsible trigger='How exactly do I "connect a wallet?"' transitionTime={200}>
+              <ol>
+                <li>Download the Pera Algo Wallet on either the <a href="https://apps.apple.com/us/app/algorand-wallet/id1459898525" target="_blank" rel="noopener noreferrer">App Store</a> or the <a href="https://play.google.com/store/apps/details?id=com.algorand.android" target="_blank" rel="noopener noreferrer">Play Store</a> and get an Algorand wallet address.</li>
+                {(REACT_APP_CONNECTOR === "MAINNET") ?
+                  <li>Purchase some ALGO from within the app or send it over from an exchange.</li> :
+                  <>
+                    <li>Set your wallet to TestNet mode by clicking on Settings -&gt; Developer Settings -&gt; Node Settings -&gt; TestNet</li>
+                    <li>Head over to <a href="https://bank.testnet.algorand.network" target="_blank" rel="noopener noreferrer">this link</a> to get some TestNet ALGO.</li>
+                  </>
+                }
+                <li>Click on the button in the top right corner and use the QR scanner to connect your wallet.</li>
+                
+                
+                
+              </ol>
+            </Collapsible>
             <Collapsible trigger="What if I get disconnected?" transitionTime={200}>
               <p>Closing your device will not cause you to lose access to the game or your funds. You may pick up wherever you left off.</p>
             </Collapsible>
@@ -778,6 +794,9 @@ export default function Body(props) {
           <div style={flexStyle({justifyContent: "center", alignItems: "center", flexDirection: "column", width: (IS_LAPTOP ? "50vw" : IS_TABLET ? "70vw" : "90vw"), maxWidth: "720px"})}>
             <div style={flexStyle({justifyContent: "center", marginTop: (IS_LAPTOP ? "80px" : IS_TABLET ? "50px" : "20px")})}>
                 <div style={flexStyle({flexDirection: "column", alignItems: "center", whiteSpace: "nowrap"})}>
+                    {(REACT_APP_CONNECTOR === "TESTNET") &&
+                      <span style={textStyle({color: "var(--light-blue)", fontSize: (IS_LAPTOP ? "40px" : IS_TABLET ? "35px" : "30px"), fontWeight: "thin", margin: "0px 0px 10px 0px"})}>TestNet</span>
+                    }
                     <span style={textStyle({fontSize: (IS_LAPTOP ? "40px" : IS_TABLET ? "35px" : "30px"), fontWeight: "thin", margin: "0px 0px 10px 0px"})}>Simple Chess Wagering</span>
                     <span style={textStyle({fontSize: (IS_PHONE ? "18px" : "20px"), margin: `0px 0px ${IS_LAPTOP ? 40 : IS_TABLET ? 33 : 25}px 0px`})}>Challenge a friend. Winner takes all.</span>
                     <div style={flexStyle({alignItems: "center"})}>

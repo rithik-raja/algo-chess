@@ -182,7 +182,7 @@ button.modal-close-button:hover {
   padding-right: 10px;
   min-width: fit-content;
   width: 30%;
-  min-height: 30px;
+  height: 40px;
   font-size: large;
   border-color: mintcream;
   color: mintcream;
