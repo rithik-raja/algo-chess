@@ -24,7 +24,6 @@ const stdlib = loadStdlib("ALGO")
 const Axios = AxiosConstructor.create()
 const Axios2 = AxiosConstructor.create()
 Axios.defaults.headers.common["Access-Control-Allow-Origin"] = process.env.REACT_APP_ORIGIN
-Axios2.defaults.headers.common["Access-Control-Allow-Origin"] = process.env.REACT_APP_ORIGIN
 
 let isModalShownOnRerender = 0 // when state is set, whether to show modal
 let wagerDefaultValueOnRerender = 5 // when state is set, wager displayed in wager box
