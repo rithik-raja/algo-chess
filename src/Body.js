@@ -226,6 +226,7 @@ export default function Body(props) {
         if (!accepted[0]) {
           wagerDisableStatusOnRerender = false
           if (accepted[1].includes("overspend")) setErrorMessage("Error: Overspend. Please make sure you have enough ALGO!")
+          if (accepted[1].includes("below min")) setErrorMessage("Error: Overspend. Please make sure you have enough ALGO!")
           if (accepted[1].includes("User has rejected")) setErrorMessage("Error: The user rejected the transaction request.")
           setIsLoading(0)
           setNewGameView(0)
