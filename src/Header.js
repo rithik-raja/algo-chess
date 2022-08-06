@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 
 import WalletConnect from "@walletconnect/client"
 import QRCodeModal from "algorand-walletconnect-qrcode-modal"
-import algosdk from "algosdk"
+import algosdk, { Algod } from "algosdk"
 import { formatJsonRpcRequest } from "@json-rpc-tools/utils"
 
 import { loadStdlib } from "@reach-sh/stdlib"
@@ -178,6 +178,7 @@ export default function Header(props) {
             amount: amt,
             suggestedParams: params
         })
+        const txID = txn.txID().toString()
         const txns = [txn]
         const txnsToSign = txns.map(txn => {
             const encodedTxn = Buffer.from(algosdk.encodeUnsignedTransaction(txn)).toString("base64")
@@ -189,7 +190,12 @@ export default function Header(props) {
         const requestParams = [txnsToSign]
         const request = formatJsonRpcRequest("algo_signTxn", requestParams)
         try {
-            await connector.sendCustomRequest(request)
+            const result = await connector.sendCustomRequest(request)
+            const decodedResult = result.map(element => {
+                return element ? new Uint8Array(Buffer.from(element, "base64")) : null;
+            })
+            await algodClient.sendRawTransaction(decodedResult).do()
+            await algosdk.waitForConfirmation(algodClient, txID, 2)
             return [true]
             
         } catch (e) {
