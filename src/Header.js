@@ -199,6 +199,7 @@ export default function Header(props) {
             return [true]
             
         } catch (e) {
+            console.log(e)
             return [false, JSON.stringify(e.message)]
         }
         
