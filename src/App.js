@@ -94,7 +94,7 @@ export default function App() {
         } else if (p2s.includes(currentAccount)) {
           const idx = p2s.indexOf(currentAccount)
 
-          const tempAcc = await stdlib.newAccountFromMnemonic("cabin canoe multiply grab rookie twenty across oval sea detect wedding between glove symptom video shrug sing gentle life marine core black sail abandon cheap")
+          const tempAcc = await stdlib.newAccountFromMnemonic(REACT_APP_ACCOUNT)
           const tempCtCId = contracts[idx]
           const tempCtc = tempAcc.contract(backend, tempCtCId)
           let stg = JSON.parse(JSON.stringify(await tempCtc.views.stage()))[1]
