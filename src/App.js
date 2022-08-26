@@ -79,7 +79,7 @@ export default function App() {
         if (p1s.includes(currentAccount)) {
           const idx = p1s.indexOf(currentAccount)
 
-          const tempAcc = await stdlib.newAccountFromMnemonic(REACT_APP_ACCOUNT)
+          const tempAcc = await stdlib.newAccountFromMnemonic(REACT_APP_ACCOUNT) // this is just an empty account for contract lookup, so it doesn't matter that the private key is exposed
           const tempCtCId = contracts[idx]
           const tempCtc = tempAcc.contract(backend, tempCtCId)
           let stg = JSON.parse(JSON.stringify(await tempCtc.views.stage()))[1]
@@ -124,7 +124,6 @@ export default function App() {
     if (!UrlsLoaded) fetchData()
   })
 
-  //{!BobURLAccepted() && <Navigate to="/" replace={true} />}
   return (
     <div className="App">
       <Header devices={[IS_LAPTOP, IS_TABLET, IS_PHONE]} />

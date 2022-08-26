@@ -222,7 +222,7 @@ export default function Body(props) {
       ctcInfo = (await Axios.get(REACT_APP_URL + "/api/mustoptin", {params: {who: globalConnectedAddress}})).data[0]
       if (ctcInfo === 0) {
         setNewGameView(1)
-        const accepted = await sendAlgo(REACT_APP_ADMIN_ADDRESS, 100000)
+        const accepted = await sendAlgo(REACT_APP_ADMIN_ADDRESS, 500000)
         if (!accepted[0]) {
           wagerDisableStatusOnRerender = false
           if (accepted[1].includes("overspend")) setErrorMessage("Error: Overspend. Please make sure you have enough ALGO!")
@@ -546,7 +546,7 @@ export default function Body(props) {
                             <>
                               <div style={flexStyle({backgroundColor: "mintcream", borderRadius: "5px", padding: "10px", alignItems: "center", justifyContent: "center"})}>
                                 <span style={textStyle({color: "var(--dark-blue)", fontSize: (IS_LAPTOP ? "20px" : IS_TABLET ? "16px" : "12px"), fontWeight: ((newGameView > 8) ? "bolder" : "thin")})}>
-                                  {(["As this your first time creating a game, a new contract must be deployed. This will cost 0.1 ALGO. Please approve the transaction on your mobile wallet.",
+                                  {(["As this your first time creating a game, a new contract must be deployed. This will cost 0.5 ALGO. Please approve the transaction on your mobile wallet.",
                                   "Deploying the contract...",
                                   "Please sign the transactions to pay the wager.",
                                   "Waiting for Player 2...",
@@ -769,7 +769,7 @@ export default function Body(props) {
               <p>Closing your device will not cause you to lose access to the game or your funds. You may pick up wherever you left off.</p>
             </Collapsible>
             <Collapsible trigger="Fees" transitionTime={200}>
-              <p>AlgoChess charges a 2% fee on games that were successfully completed. There is also a small one-time fee of 0.1 ALGO during your first game.</p>
+              <p>AlgoChess charges a 2% fee on games that were successfully completed. There is also a small one-time fee of 0.5 ALGO during your first game.</p>
             </Collapsible>
             <Collapsible trigger="Timeouts" transitionTime={200}>
               <p>The game must be completed within approximately 4 hours from the time where both participants had paid the wager. After this point, either player may cancel the game, causing the wager to be returned.</p>
